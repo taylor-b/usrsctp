@@ -643,8 +643,11 @@ sctp_handle_asconf(struct mbuf *m, unsigned int offset,
 		return;
 	}
 	asoc = &stcb->asoc;
-	serial_num = ntohl(cp->serial_number);
-
+#if defined(__Userspace__) && defined(FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION)
+        serial_num = (asoc->asconf_seq_in + 1);
+#else
+        serial_num = ntohl(cp->serial_number);
+#endif
 	if (SCTP_TSN_GE(asoc->asconf_seq_in, serial_num)) {
 		/* got a duplicate ASCONF */
 		SCTPDBG(SCTP_DEBUG_ASCONF1,
