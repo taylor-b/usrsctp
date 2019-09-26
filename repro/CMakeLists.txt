@@ -60,7 +60,7 @@ endif ()
 # COMPILER FLAGS
 #################################################
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-gnu-zero-variadic-macro-arguments -Wno-unused-variable -g")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-gnu-zero-variadic-macro-arguments -Wno-unused-variable")
 
 
 #################################################
@@ -70,3 +70,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-gnu-zero-variadic-macro-arguments -Wno-
 add_executable(repro_380 repro_380.c ../programs/programs_helper.c)
 target_compile_definitions(repro_380 PRIVATE FUZZ_VERBOSE)
 target_link_libraries(repro_380 usrsctp-static)
+
+add_executable(repro_382 repro_382.c ../programs/programs_helper.c)
+target_compile_definitions(repro_382 PRIVATE FUZZ_VERBOSE)
+target_link_libraries(repro_382 usrsctp-static)
