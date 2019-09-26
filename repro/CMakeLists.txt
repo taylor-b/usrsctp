@@ -74,3 +74,7 @@ target_link_libraries(repro_380 usrsctp-static)
 add_executable(repro_382 repro_382.c ../programs/programs_helper.c)
 target_compile_definitions(repro_382 PRIVATE FUZZ_VERBOSE)
 target_link_libraries(repro_382 usrsctp-static)
+
+add_executable(repro_386 repro_386.c ../programs/programs_helper.c)
+target_compile_definitions(repro_386 PRIVATE FUZZ_VERBOSE)
+target_link_libraries(repro_386 usrsctp-static)
