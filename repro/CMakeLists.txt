@@ -69,16 +69,20 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-gnu-zero-variadic-macro-arguments -Wno-
 
 add_executable(repro_380 repro_380.c ../programs/programs_helper.c)
 target_compile_definitions(repro_380 PRIVATE FUZZ_VERBOSE)
-target_link_libraries(repro_380 usrsctp-static)
+target_link_libraries(repro_380 usrsctp)
 
 add_executable(repro_382 repro_382.c ../programs/programs_helper.c)
 target_compile_definitions(repro_382 PRIVATE FUZZ_VERBOSE)
-target_link_libraries(repro_382 usrsctp-static)
+target_link_libraries(repro_382 usrsctp)
 
 add_executable(repro_386 repro_386.c ../programs/programs_helper.c)
 target_compile_definitions(repro_386 PRIVATE FUZZ_VERBOSE)
-target_link_libraries(repro_386 usrsctp-static)
+target_link_libraries(repro_386 usrsctp)
 
 add_executable(repro_396 repro_396.c ../programs/programs_helper.c)
 target_compile_definitions(repro_396 PRIVATE FUZZ_VERBOSE)
-target_link_libraries(repro_396 usrsctp-static)
+target_link_libraries(repro_396 usrsctp)
+
+add_executable(repro_547 repro_547.c ../programs/programs_helper.c)
+target_compile_definitions(repro_547 PRIVATE FUZZ_VERBOSE)
+target_link_libraries(repro_547 usrsctp)
