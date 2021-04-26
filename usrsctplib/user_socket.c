@@ -284,7 +284,6 @@ sofree(struct socket *so)
 	}
 	SOCK_UNLOCK(so);
 	ACCEPT_UNLOCK();
-	sctp_close(so); /* was...    sctp_detach(so); */
 	/*
 	 * From this point on, we assume that no other references to this
 	 * socket exist anywhere else in the stack.  Therefore, no locks need
@@ -2015,6 +2014,7 @@ usrsctp_close(struct socket *so) {
 			}
 			ACCEPT_UNLOCK();
 		}
+		sctp_close(so); /* was...    sctp_detach(so); */
 		ACCEPT_LOCK();
 		SOCK_LOCK(so);
 		sorele(so);
