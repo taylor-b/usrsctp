@@ -2106,6 +2106,7 @@ sctp_process_cookie_existing(struct mbuf *m, int iphlen, int offset,
 			SCTP_ZONE_FREE(SCTP_BASE_INFO(ipi_zone_chunk), chk);
 			SCTP_DECR_CHK_COUNT();
 		}
+		asoc->str_reset = NULL;
 		TAILQ_FOREACH_SAFE(chk, &asoc->asconf_send_queue, sctp_next, nchk) {
 			TAILQ_REMOVE(&asoc->asconf_send_queue, chk, sctp_next);
 			if (chk->data) {
