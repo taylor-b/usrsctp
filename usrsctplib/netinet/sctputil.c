@@ -1872,6 +1872,11 @@ sctp_timeout_handler(void *t)
 	    !(stcb->sctp_ep->sctp_flags & SCTP_PCB_FLAGS_SOCKET_GONE) &&
 	    (stcb->sctp_socket != NULL)) {
 		upcall_socket = stcb->sctp_socket;
+		// Sleep here in order to reproduce a race condition with
+		// usrsctp_close.
+		SCTPDBG(SCTP_DEBUG_TIMER2, "Timer thread about to sleep.\n");
+		usleep(500 * 1000);
+		SCTPDBG(SCTP_DEBUG_TIMER2, "Timer thread done sleeping.\n");
 		SOCK_LOCK(upcall_socket);
 		soref(upcall_socket);
 		SOCK_UNLOCK(upcall_socket);

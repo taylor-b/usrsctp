@@ -90,3 +90,7 @@ target_link_libraries(repro_547 usrsctp)
 add_executable(repro_str_reset_uaf repro_str_reset_uaf.c ../programs/programs_helper.c)
 target_compile_definitions(repro_str_reset_uaf PRIVATE FUZZ_VERBOSE)
 target_link_libraries(repro_str_reset_uaf usrsctp)
+
+add_executable(repro_double_sofree repro_double_sofree.c ../programs/programs_helper.c)
+target_compile_definitions(repro_double_sofree PRIVATE FUZZ_VERBOSE)
+target_link_libraries(repro_double_sofree usrsctp)
